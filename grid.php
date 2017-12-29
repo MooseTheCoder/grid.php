@@ -5,6 +5,7 @@ ob_start();
 echo "<style>
 *{
 	font-family:monospace;
+	font-size:50px;
 }
 </style>";
 
@@ -26,13 +27,11 @@ function grid($x,$y,$grd){
 	return substr($grd[$gy],$x,1);
 }
 
-function plot($x,$y,$grd,$char){
+function plot($x,$y,$char,$grd){
 	$gy = (count($grd) - $y)-1;
 	$grd[$gy]=substr_replace($grd[$gy],$char,$x,1);
 	return $grd;
 }
-
-$grid = plot(10,5,$grid,"y");
 
 foreach($grid as $row){
 	echo $row . '<br>';
