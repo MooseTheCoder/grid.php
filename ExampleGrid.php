@@ -2,12 +2,7 @@
 
 ob_start();
 
-echo "<style>
-*{
-	font-family:monospace;
-	font-size:50px;
-}
-</style>";
+echo "<style>*{font-family:monospace;font-size:50px;}</style>";
 
 $grid = [
 "|........................",
@@ -53,12 +48,13 @@ foreach($eqiv as $value){
 	$current = 1;
 	$value ++;
 	while($current < $value){
-		$grid = plot($cplot,$current,"X",$grid);
+		$grid = plot($cplot,$current,'X',$grid);
 		$current ++;
 	}
 	$cplot = $cplot + 2;
 }
 
 foreach($grid as $row){
-	echo $row . '<br>';
+	$x = str_replace('.',"&nbsp;",$row);
+	echo str_replace('X','<span style="color:red;">X</span>',$x).'<br />';
 }
