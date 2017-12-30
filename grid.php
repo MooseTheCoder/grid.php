@@ -33,6 +33,13 @@ function plot($x,$y,$char,$grd){
 	return $grd;
 }
 
+function addYnums($grd){
+	for ($i = 0; $i < count($grd); ++$i) {
+		$grd = plot(0,$i,$i,$grd);
+	}
+	return $grd;
+}
+
 foreach($grid as $row){
 	echo $row . '<br>';
 }
