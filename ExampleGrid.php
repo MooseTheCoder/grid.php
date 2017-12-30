@@ -14,6 +14,7 @@ $grid = [
 "|........................",
 "|........................",
 "|........................",
+"|........................",
 "|________________________"
 ];
 
@@ -28,6 +29,12 @@ function plot($x,$y,$char,$grd){
 	return $grd;
 }
 
+function addYnums($grd){
+	for ($i = 0; $i < count($grd); ++$i) {
+		$grd = plot(0,$i,$i,$grd);
+	}
+	return $grd;
+}
 $mabbr = ['J','F','M','A','M','J','J','A','S','O','N','D'];
 $cplot = 2;
 
@@ -38,11 +45,9 @@ foreach($mabbr as $month){
 
 $cplot = 2;
 
-for ($i = 0; $i < count($grid); ++$i) {
-	$grid = plot(0,$i,$i,$grid);
-}
+$grid = addYnums($grid);
 
-$eqiv = [9,5,6,6,2,3,3,4,5,0,7,2];
+$eqiv = [9,5,6,7,2,3,3,4,5,0,7,2];
 
 foreach($eqiv as $value){
 	$current = 1;
@@ -55,6 +60,6 @@ foreach($eqiv as $value){
 }
 
 foreach($grid as $row){
-	$x = str_replace('.',"&nbsp;",$row);
+	$x = str_replace('.','&nbsp;',$row);
 	echo str_replace('X','<span style="color:red;">X</span>',$x).'<br />';
 }
